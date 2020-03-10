@@ -15,14 +15,17 @@
 		<!-- Заголовок на вкладке в браузере -->
 		<title>Вадим Любич - web разработчик</title>
 
-		<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700&display=swap&subset=cyrillic-ext"
-		rel="stylesheet"
+		<link 
+			href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700&display=swap&subset=cyrillic-ext"
+			rel="stylesheet"
 		>
 		<!-- Подключаем наш файл со стилями, который находится в папке css-->
 		<link rel="stylesheet" href="css/style.css">
-		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
-		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"
+		<link 
+			rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+			integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"
 		>
+		<link rel="stylesheet" href="./css/animate.css">
 </head>
 
 <body>
@@ -31,15 +34,21 @@
 	<header>
 		<div class="container">
 			<div class="row">
-				<div class="col-7">
-					<img src="./img/imac.png" alt="Photo">
+				<div class="col-lg-7">
+					<img class="head-img wow fadeInLeftBig" src="./img/imac.png" alt="Photo">
 				</div>
-				<div class="col-5">
+				<div class="col-lg-5">
 					<div>
-					<p class="header-pretitle">Веб-разработчик</p>
-					<h1 class="header-title">Вадим Любич</h1>
-					<p class="header-subtitle">HTML/CSS/JS</p>
-					<button class="header-button">Связаться</button>
+						<p class="header-pretitle wow fadeInRightBig" data-wow-delay='0.1s'>Веб-разработчик</p>
+						<h1 class="header-title wow fadeInRightBig" data-wow-delay='0.2s'>Вадим Любич</h1>
+						<p class="header-subtitle wow fadeInRightBig" data-wow-delay='0.3s'>HTML/CSS/JS</p>
+						<a 
+							href="https://github.com/Vadym23/" 
+							class="header-button wow fadeInRightBig" 
+							data-wow-delay='0.2s'
+						>
+							Связаться
+						</a>
 					</div>
 				</div>
 			</div>
@@ -49,21 +58,21 @@
 <!-- Секция портфолио -->
 	<section class="portfolio">
 		<div class="container">
-			<div class="portfolio-block">
+			<div class="portfolio-block wow fadeIn">
 				<h2 class="portfolio-title">Портфолио</h2>
 				<p class="portfolio-subtitle">Мои работы</p>
 				<div class="row">
-					<div class="col-6">
+					<div class="col-md-6">
 						<div class="portfolio-col-1">
-						<img src="./img/work.png" alt="sait">
+						<img class="wow bounceInUp" src="./img/work.png" alt="sait">
 						<h3>Тестовий сайт №1</h3>
 						<p class="portfolio-text">Описание к сайту №1. Какие технологии. </p>
 						<a href="#">Смотреть работу</a>
 						</div>
 					</div>
-					<div class="col-6">
+					<div class="col-md-6">
 						<div class="portfolio-col-2">
-						<img src="./img/work.png" alt="sait">
+						<img class="wow bounceInUp" src="./img/work.png" alt="sait">
 						<h3>Тестовий сайт №2</h3>
 						<p class="portfolio-text">Описание к сайту №2. Какие технологии. </p>
 						<a href="#">Смотреть работу</a>
@@ -78,21 +87,32 @@
 	<footer>
 		<div class="container">
 			<div class="row">
-				<div class="col-4">
+				<div class="col-md-4">
 					<h4 class="footer-author">Вадим Любич</h4>
 					<p class="footer-text">Веб-разработчик</p>
 				</div>
-				<div class="col-4">
-					<div class="social-block">
+				<div class="col-md-4">
+					<div class="social-block wow fadeIn">
 						<p>Соц. сети:</p>
-						<a href="#"><img src="./img/facebook-logo.png" alt="facebook-logo"></a>
-						<a href="#"><img src="./img/telegram-logo.png" alt="telegram-logo"></a>
+						<a 
+							class="wow bounceInDown" 
+							data-wow-delay='0.1s'
+							href="https://www.facebook.com/profile.php?id=100018419805823"
+						>
+							<img src="./img/facebook-logo.png" alt="facebook-logo">
+						</a>
+						<a 
+							class="wow bounceInDown"
+							data-wow-delay='0.2s' 
+							href="https://web.telegram.org/#/im"
+						>
+							<img src="./img/telegram-logo.png" alt="telegram-logo"></a>
 					</div>
 				</div>
-				<div class="col-4">
+				<div class="col-md-4">
 					<div class="footer-cta-block">
 						<p class="footer-cta">Напишите мне:</p>
-						<button class="footer-button">Написать</button>
+						<a href="https://github.com/Vadym23/" class="footer-button">Написать</a>
 					</div>
 				</div>
 			</div>
@@ -101,14 +121,10 @@
 
 
 	<!-- JS -->
- 	<!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" 
- 		integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+	<script src="./js/wow.min.js"></script>
+	<script>
+		new WOW().init();
 	</script>
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" 
-	integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
-	</script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" 
-	integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
-	</script> -->
+
 </body>
 </html>
