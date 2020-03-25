@@ -74,7 +74,7 @@ function imgs() {
 }
 
 function gh() {
-    return gulp.src('./dist/**/*')
+    return gulp.src('./build/**/*')
       .pipe(ghPages());
   }
 
