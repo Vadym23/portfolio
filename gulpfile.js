@@ -7,7 +7,7 @@ const uglify = require('gulp-uglify');
 const del = require('del');
 const browserSync = require('browser-sync').create();
 const htmlmin = require('gulp-htmlmin');
-const imagemin = require('gulp-imagemin');
+const tinypng = require('gulp-tinypng-compress');
 const ghPages = require('gulp-gh-pages');
 // const pug = require('gulp-pug');
 
@@ -67,8 +67,12 @@ function scripts() {
 }
 
 function imgs() { 
-    return gulp.src('src/img/*')
-        .pipe(imagemin())
+    return gulp.src('src/img/*.{png,jpg,jpeg}')
+        .pipe(tinypng({
+            key: 'WTrTPN36fpBhrcGJ7Cd3vmsWGYh6lB7Z',
+            sigFile: 'images/.tinypng-sigs',
+            log: true
+        }))
         .pipe(gulp.dest('build/img'))
         .pipe(browserSync.stream());
 }
