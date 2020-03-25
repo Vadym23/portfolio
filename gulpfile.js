@@ -1,14 +1,20 @@
 // Connect modules
 const gulp = require('gulp');
 const concat = require('gulp-concat');
-const autoprefixer = require('gulp-autoprefixer');
+
+const htmlmin = require('gulp-htmlmin');
 const cleanCSS = require('gulp-clean-css');
 const uglify = require('gulp-uglify');
+const tinypng = require('gulp-tinypng-compress');
+
+const autoprefixer = require('gulp-autoprefixer');
 const del = require('del');
 const browserSync = require('browser-sync').create();
-const htmlmin = require('gulp-htmlmin');
-const tinypng = require('gulp-tinypng-compress');
-const ghPages = require('gulp-gh-pages');
+
+const ghPages = require('gh-pages');
+const path = require('path');
+
+// const ghPages = require('gulp-gh-pages');
 // const pug = require('gulp-pug');
 
 // const htmlFiles = [
@@ -16,12 +22,14 @@ const ghPages = require('gulp-gh-pages');
 //     './src/html/pages/footer.html'
 // ];
 
+// CSS File list
 const cssFiles = [
     './node_modules/normalize.css/normalize.css',
     './src/css/style.css',
     './src/css/animate.css'
 ];
 
+// JS File list
 const jsFiles = [
     './src/js/wow.min.js'
 ];
@@ -33,6 +41,7 @@ const jsFiles = [
 //         .pipe(browserSync.stream());   
 // }
 
+// Gulp functions
 function htmls() {
     return gulp.src('src/*.html')
         .pipe(htmlmin({
@@ -77,10 +86,18 @@ function imgs() {
         .pipe(browserSync.stream());
 }
 
-function gh() {
-    return gulp.src('./build/**/*')
-      .pipe(ghPages());
+function deploy(cb) {
+    ghPages.publish(path.join(process.cwd(), './build'), cb);
   }
+
+function clean () {
+    return del(['build/*'])
+}
+
+// function gh() {
+//     return gulp.src('./build/**/*')
+//       .pipe(ghPages());
+//   }
 
 function watch() {
     browserSync.init({
@@ -88,25 +105,22 @@ function watch() {
             baseDir: "./build/"
         }
     });
-
     gulp.watch('./src/css/**/*.css', styles);
     gulp.watch('./src/js/**/*.js', scripts);
     gulp.watch('./src/img/**/*.png', imgs);
     gulp.watch("./*.html", browserSync.reload);
-    // {jpg, jpeg, png, gif, ico}
 }
 
-function clean () {
-    return del(['build/*'])
-}
 
+// Gulp tasks
 gulp.task('htmls', htmls);
 gulp.task('styles', styles);
 gulp.task('scripts', scripts);
 gulp.task('imgs', imgs);
 gulp.task('watch', watch);
 gulp.task('clean', clean);
-gulp.task('gh', gh);
+gulp.task('deploy', deploy);
+// gulp.task('gh', gh);
 
 gulp.task('build', gulp.series(clean,
         gulp.parallel(htmls, styles, scripts, imgs)
